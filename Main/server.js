@@ -1,12 +1,15 @@
 const express = require('express');
-const path = require('path');
+const exphbs = require("express-handlebars");
+const allRoutes = require('./controllers');
+const sequelize = require('./config/connection');
+const session = require("express-session");
+// const path = require("path");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
 const { clog } = require('./middleware/clog');
 
-// const routes = require('./routes');
-
 const app = express();
-
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.PORT || 3000;
 
 // Import custom middleware, "cLog"
 app.use(clog);
@@ -15,26 +18,33 @@ app.use(clog);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// TODO: currently will crash server when including api routes, and the cause is we havent implemented the routes correctly.
-// app.use(routes); 
+const sess = {
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 3
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize,
+    })
+};
+app.use(session(sess));
 
+// Static directory
+// app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static('public'));
 
-// GET Route for homepage
-app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
+// app uses handlebars in /Views 
+const hbs = exphbs.create({});
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
-// GET Route for feedback page
-app.get('/posts', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/pages/posts.html'))
-);
 
-// Wildcard route to direct users to a 404 page
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/pages/404.html'))
-);
+app.use("/", allRoutes);
 
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+sequelize.sync({ force: false }).then(function () {
+    app.listen(PORT, () => {
+        console.log(`App listening at http://localhost:${PORT} 🚀`)
+    });
+});

@@ -1,4 +1,3 @@
-
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection.js');
@@ -12,7 +11,6 @@ Country.init(
     {
         sequelize,
         timestamps: false,
-        freezeTableName: true,
         underscored: true,
         modelName: 'country',
     }
