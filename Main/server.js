@@ -3,7 +3,7 @@ const exphbs = require("express-handlebars");
 const allRoutes = require('./controllers');
 const sequelize = require('./config/connection');
 const session = require("express-session");
-// const path = require("path");
+const path = require("path");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const { clog } = require('./middleware/clog');
@@ -32,8 +32,8 @@ const sess = {
 app.use(session(sess));
 
 // Static directory
-// app.use(express.static(path.join(__dirname, '/public')));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.static('public'));
 
 // app uses handlebars in /Views 
 const hbs = exphbs.create({});
