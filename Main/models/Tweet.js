@@ -7,6 +7,10 @@ Tweet.init(
     {
         // define columns
         // a user's post
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         content: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -14,14 +18,19 @@ Tweet.init(
                 len: [1, 241]
             }
         },
-        user_id: {
+        userId: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'users',
                 key: 'id',
             },
+        },
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
         }
     },
     { sequelize });
 
-    module.exports = Tweet;
+module.exports = Tweet;

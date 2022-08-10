@@ -16,9 +16,13 @@ router.post("/",(req,res)=>{
     if(!req.session.user){
         return res.status(403).json({msg:"login first to post a blog!"})
     }
+    console.log("in post tweet, user is",req.session.user)
+    console.log("in post tweet, body is",req.body)
     Tweet.create({
-        user_id:req.session.user.id,
-        content:req.body.content,
+        // title: req.body.title,
+        // content: req.body.content,
+        ...req.body,
+        userId: req.session.user.id
     }).then(data=>{
         res.json(data)
     }).catch(err=>{
@@ -27,7 +31,7 @@ router.post("/",(req,res)=>{
 })
 
 
-router.delete("/:id",(req,res)=>{
+router.delete("/:id", (req,res)=>{
     if(!req.session.user){
         return res.status(403).json({ msg: "login first to post!" })
     }
@@ -35,7 +39,7 @@ router.delete("/:id",(req,res)=>{
         if(!foundTweet){
             return res.status(404).json({ msg: "no such blog post" })
         }
-        if(foundTweet.user_id!==req.session.user.id){
+        if(foundTweet.userId!==req.session.user.id){
             return res.status(403).json({ msg: "you didnt write this blog post, you don't have permission to delete this post" })
         }
         Tweet.destroy({
