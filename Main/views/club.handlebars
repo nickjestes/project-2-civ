@@ -1,0 +1,32 @@
+<a href="/">Home</a>
+
+<h1>Welcome to the club, {{username}}</h1>
+
+<p>
+    You will see blog posts below, and be able to create one as well.
+</p>
+
+<h2>Post a blog</h2>
+<div class="container-fluid">
+    <div class="row">
+        <form action="" id="new-blog" class="col-8">
+            <input class="title" id="name" placeholder="Blog Title" maxlength="28" type="text" />
+            <textarea class="note-textarea" id="blog-content" placeholder="Blog Text"></textarea>
+            <button>Create</button>
+
+        </form>
+    </div>
+</div>
+
+{{#each Tweets}}
+    <a href="/tweets/{{id}}">{{title}}</a>
+    <p>
+        {{content}}
+    </p>
+    <span>Created at {{date_created}}</span>
+    <button class="del-btn" data-id="{{id}}">Delete</button>
+    <hr>
+{{/each}}
+
+<script src="/js/createBlog.js"></script>
+<script src="/js/deleteBlog.js"></script>
