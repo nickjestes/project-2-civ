@@ -5,7 +5,6 @@ const { User, Tweet } = require('../../models');
 const { Op } = require("sequelize");
 
 // get all User tweet posts
-// TODO
 router.get("/", (req, res) => {
     console.log(req.session);
 
