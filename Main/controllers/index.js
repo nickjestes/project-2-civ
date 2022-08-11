@@ -22,26 +22,31 @@ router.get("/secretclub", (req, res) => {
     if (!req.session.user) {
         res.redirect("/login");
     }
-    User.findByPk(req.session.user.id, {
-        include:[Tweet]
-    }).then(userData => {
-        const hbsData = userData.toJSON();
-        console.log("about to render at club with hbsData",{hbsData});
-        console.log("looking inside hbsData.Tweets",hbsData.Tweets);
-        res.render("club", { 
-            logged_in: req.session.user != null, 
-            Tweets: hbsData.Tweets
+    Tweet.findAll({
+        include: [User]
+    }).then(userDatas => {
+        const hbsData = [];
+
+        userDatas.map(userData => {
+            hbsData.push(userData.toJSON());
         });
-    });
+
+        res.render("club", {
+            logged_in: req.session.user != null,
+            megaData: hbsData
+        })
+    })
 })
 
 router.get("/tweets/:id", (req, res) => {
-    Tweet.findByPk(req.params.id).then( tweetData => {
+    Tweet.findByPk(req.params.id).then(tweetData => {
         const hbsData = tweetData.toJSON();
+        console.log("in single tweet", hbsData);
         res.render("singleblog", {
-            title: hbsData.Tweets.title,
-            date_created: hbsData.Tweets.date_created,
-            content: hbsData.Tweets.content
+            logged_in: req.session.user != null,
+            title: hbsData.title,
+            date_created: hbsData.date_created,
+            content: hbsData.content,
         });
     });
 })

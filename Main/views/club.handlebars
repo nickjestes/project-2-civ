@@ -18,12 +18,12 @@
     </div>
 </div>
 
-{{#each Tweets}}
+{{#each megaData}}
     <a href="/tweets/{{id}}">{{title}}</a>
     <p>
-        {{content}}
+        {{content}} -{{user.username}}
     </p>
-    <span>Created at {{date_created}}</span>
+    <span>Created at {{{trimString date_created 0 15}}}</span>
     <button class="del-btn" data-id="{{id}}">Delete</button>
     <hr>
 {{/each}}

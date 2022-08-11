@@ -36,7 +36,14 @@ app.use(express.static(path.join(__dirname, '/public')));
 // app.use(express.static('public'));
 
 // app uses handlebars in /Views 
-const hbs = exphbs.create({});
+const hbs = exphbs.create({
+    helpers: {
+        trimString(passedString, startstring, endstring) {
+            let theString = String(passedString).substring( startstring, endstring );
+            return theString;
+        }
+    }
+});
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
