@@ -1,156 +1,155 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
-  
-  ul li {
-    list-style: none;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  form input[type="submit"] {
-    cursor: pointer;
-  }
-  
-  header {
-    padding: 5px 20px;
-    border: 1px solid black;
-  }
-  
-  .main-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbrand {
-    font-size: 32px;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .user-auth {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .form-group {
-    margin-top: 10px;
-  }
-  
-  .form-group input {
-    border: 1px solid lightgray;
-    padding: 6px 12px;
-  }
-  
-  nav {
-    margin-top: 20px;
-  }
-  
-  nav ul {
-    display: flex;
-    gap: 40px;
-    justify-content: flex-end;
-  }
-  
-  nav ul li a {
-    color: black;
-  }
-  
-  /* main styles */
-  
-  .main-section {
-    padding: 5px;
-  }
-  
-  .main-section form {
-    display: flex;
-    max-width: 500px;
-  }
-  
-  .main-section .form-group,
-  .main-section input[type="text"] {
-    width: 100%;
-  }
-  
-  #characterList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    max-width: 600px;
-    margin-top: 30px;
-  }
-  
-  .character-li {
-    display: flex;
-    gap: 40px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 500px;
-    cursor: pointer;
-  }
-  
-  .character-li img {
-    pointer-events: none;
-  }
-  
-  #commentSection {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid black;
-    min-height: 500px;
-  }
-  
-  #commentSection h2 {
-    text-align: center;
-  }
-  
-  .comment-li {
-    border: 1px solid black;
-    margin: 20px 0;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .social-links {
-    display: flex;
-    gap: 10px;
-    font-size: 16px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .hero div,
-  .hero ul {
-    flex: 1;
-  }
-  /* main styles */
-  
-  /* Each Character Detail */
-  
-  .each-character-details {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 10px;
-  }
-  
-  .each-character-details img {
-    width: 60px;
-  }
-  
-  /* Each Character Detail */
-  
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+form input[type="submit"] {
+  cursor: pointer;
+}
+
+header {
+  padding: 5px 20px;
+  border: 1px solid black;
+}
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbrand {
+  font-size: 32px;
+  color: black;
+  font-weight: bold;
+}
+
+.user-auth {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+.form-group input {
+  border: 1px solid lightgray;
+  padding: 6px 12px;
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav ul {
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+}
+
+nav ul li a {
+  color: black;
+}
+
+/* main styles */
+
+.main-section {
+  padding: 5px;
+}
+
+.main-section form {
+  display: flex;
+  max-width: 500px;
+}
+
+.main-section .form-group,
+.main-section input[type="text"] {
+  width: 100%;
+}
+
+#characterList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 600px;
+  margin-top: 30px;
+}
+
+.character-li {
+  display: flex;
+  gap: 40px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 500px;
+  cursor: pointer;
+}
+
+.character-li img {
+  pointer-events: none;
+}
+
+#commentSection {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid black;
+  min-height: 500px;
+}
+
+#commentSection h2 {
+  text-align: center;
+}
+
+.comment-li {
+  border: 1px solid black;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.hero div,
+.hero ul {
+  flex: 1;
+}
+/* main styles */
+
+/* Each Character Detail */
+
+.each-character-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.each-character-details img {
+  width: 60px;
+}
+
+/* Each Character Detail */
