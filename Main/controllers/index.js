@@ -21,6 +21,8 @@ router.get("/signup", (req, res) => {
 router.get("/secretclub", (req, res) => {
     if (!req.session.user) {
         res.redirect("/login");
+        alert("you must be logged in to access forum");
+        return;
     }
     Tweet.findAll({
         include: [User]
