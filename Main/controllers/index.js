@@ -26,13 +26,14 @@ router.get("/secretclub", (req, res) => {
         include: [User]
     }).then(userDatas => {
         const hbsData = [];
-
+        console.log("inside of club showing session user", req.session.user);
         userDatas.map(userData => {
             hbsData.push(userData.toJSON());
         });
 
         res.render("club", {
             logged_in: req.session.user != null,
+            username: req.session.user.username,
             megaData: hbsData
         })
     })
@@ -41,7 +42,7 @@ router.get("/secretclub", (req, res) => {
 router.get("/tweets/:id", (req, res) => {
     Tweet.findByPk(req.params.id).then(tweetData => {
         const hbsData = tweetData.toJSON();
-        console.log("in single tweet", hbsData);
+
         res.render("singleblog", {
             logged_in: req.session.user != null,
             title: hbsData.title,
