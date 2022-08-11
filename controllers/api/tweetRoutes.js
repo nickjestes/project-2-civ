@@ -19,8 +19,6 @@ router.post("/",(req,res)=>{
     console.log("in post tweet, user is",req.session.user)
     console.log("in post tweet, body is",req.body)
     Tweet.create({
-        // title: req.body.title,
-        // content: req.body.content,
         ...req.body,
         userId: req.session.user.id
     }).then(data=>{
